@@ -51,5 +51,5 @@ def TryConnection(message):
     except serial.SerialException:
         print("Connection Error. Check the Port")
 
-if __name__ == "__main__":
-    Interface()    
+
+Interface()    

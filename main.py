@@ -1,11 +1,16 @@
 import serial
 import tkinter as tk
 import platform
+import time
 
 def Interface():
+
     app = tk.Tk()
     app.title("Send Message")
     app.geometry("200x200")
+
+    connect_button = tk.Button(app, text="Conectar", command=TryConnection)
+    connect_button.pack()
 
     msg_label = tk.Label(app, text="Digite o comando (a): ")
     msg_label.pack()
@@ -39,17 +44,18 @@ def Interface():
 # Receive the message and try connection
 def SendoToArduino():
     msg = msg_entry.get()
-    TryConnection(msg)
+    ser.write(msg.encode())
 
 # Try connection and send message
-def TryConnection(message):
+def TryConnection():
     try:
+        global ser
         ser = serial.Serial(serial_port.get(), baud_rate.get(), timeout=1)
         print("Connection Established")
-        ser.write(message.encode())
-        ser.close()
+        #time.sleep(1.0)
+        #ser.write(message.encode())
+        #ser.close()
     except serial.SerialException:
         print("Connection Error. Check the Port")
-
 
 Interface()    

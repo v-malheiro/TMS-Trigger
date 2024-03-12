@@ -1,5 +1,5 @@
-const byte OutPinEMG = 13;    // Send TTL to EMG
-const byte OutPinTMS = 18;    // Send TTL to TMS 
+const byte OutPinEMG = 18;    // Send TTL to EMG
+const byte OutPinTMS = 21;    // Send TTL to TMS 
 const byte InPinTMS = 2;      // Receive signal from TMS
 String commandShotTMS = "";   // String received command for Stimulus
 unsigned long DelayTime = 4999;            // Delay compared to Trigger pulse in us
